@@ -21,7 +21,7 @@ class DotabuffSpider(scrapy.Spider):
         'void-spirit', 'phantom-lancer', 'batrider', 'lich', 'bristleback', 'arc-warden', 'undying', 'razor', 'oracle',
         'underlord', 'death-prophet', 'ogre-magi', 'juggernaut', 'techies', 'skywrath-mage', 'clockwerk', 'spectre',
         'wraith-king', 'winter-wyvern', 'brewmaster', 'tinker', 'sand-king', 'morphling', 'necrophos', 'ancient-apparition',
-        'pugna', 'storm-spirit', 'zeus', 'medusa']
+        'pugna', 'storm-spirit', 'zeus', 'medusa', 'primal-beast']
 
         for hero in pages:
             url = f'https://www.dotabuff.com/heroes/{hero}/counters'
@@ -31,8 +31,8 @@ class DotabuffSpider(scrapy.Spider):
         item = {}
         hero = response.url
         item['Hero'] = hero[hero.find('heroes')+7:hero.rfind('/')]
-        for tr in range(1, 122):
-            hero = response.xpath(f'/html/body/div[2]/div[7]/div[3]/div[4]/section[3]/article/table/tbody/tr[{tr}]/td[2]/a/text()').get()
-            disadvantage = response.xpath(f'/html/body/div[2]/div[7]/div[3]/div[4]/section[3]/article/table/tbody/tr[{tr}]/td[3]/text()').get()[:-1]
+        for tr in range(1, 123):
+            hero = response.xpath(f'/html/body/div[2]/div[2]/div[3]/div[4]/section[3]/article/table/tbody/tr[{tr}]/td[2]/a/text()').get()
+            disadvantage = response.xpath(f'/html/body/div[2]/div[2]/div[3]/div[4]/section[3]/article/table/tbody/tr[{tr}]/td[3]/text()').get()[:-1]
             item[hero] = float(disadvantage)
         return item

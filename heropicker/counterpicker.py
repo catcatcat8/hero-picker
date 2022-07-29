@@ -25,7 +25,7 @@ heroes = ['anti-mage', 'meepo', 'lone-druid', 'tiny', 'slardar', 'legion-command
         'void-spirit', 'phantom-lancer', 'batrider', 'lich', 'bristleback', 'arc-warden', 'undying', 'razor', 'oracle',
         'underlord', 'death-prophet', 'ogre-magi', 'juggernaut', 'techies', 'skywrath-mage', 'clockwerk', 'spectre',
         'wraith-king', 'winter-wyvern', 'brewmaster', 'tinker', 'sand-king', 'morphling', 'necrophos', 'ancient-apparition',
-        'pugna', 'storm-spirit', 'zeus', 'medusa']
+        'pugna', 'storm-spirit', 'zeus', 'medusa', 'primal-beast']
 
 big_heroes = ['Anti-Mage', 'Meepo', 'Lone Druid', 'Tiny', 'Slardar', 'Phantom Assassin', 'Legion Commander', 'Troll Warlord', 
               'Monkey King', 'Riki', 'Templar Assassin', 'Io', 'Kunkka', 'Huskar', 'Axe', 'Bloodseeker', 'Earthshaker', 
@@ -41,7 +41,7 @@ big_heroes = ['Anti-Mage', 'Meepo', 'Lone Druid', 'Tiny', 'Slardar', 'Phantom As
               'Void Spirit', 'Phantom Lancer', 'Batrider', 'Lich', 'Bristleback', 'Arc Warden', 'Undying', 'Razor', 'Underlord', 
               'Oracle', 'Death Prophet', 'Ogre Magi', 'Juggernaut', 'Techies', 'Skywrath Mage', 'Clockwerk', 'Spectre', 
               'Wraith King', 'Winter Wyvern', 'Brewmaster', 'Tinker', 'Sand King', 'Morphling', 'Necrophos', 'Ancient Apparition', 
-              'Pugna', 'Storm Spirit', 'Zeus', 'Medusa']
+              'Pugna', 'Storm Spirit', 'Zeus', 'Medusa', 'Primal Beast']
 
 all_heroes = pformat(sorted(heroes)).replace('[', '')
 all_heroes = all_heroes.replace(']', '')
@@ -193,7 +193,7 @@ def choose(message, *args):
 
 def return_counters(versus):
 
-    with open('dump.json') as json_file:
+    with open('./heropicker/spiders/dump.json') as json_file:
         data = json.load(json_file)
         
         opponents = []
@@ -231,7 +231,7 @@ def return_dict_as_table(versus):
     return tmpstring
 
 def main():
-    bot.polling(none_stop=True)
+    bot.infinity_polling(timeout=10, long_polling_timeout = 5)
 
 if __name__ == "__main__":
     main()
