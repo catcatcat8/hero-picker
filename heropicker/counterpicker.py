@@ -193,7 +193,7 @@ def choose(message, *args):
 
 def return_counters(versus):
 
-    with open('./heropicker/spiders/dump.json') as json_file:
+    with open('dump.json') as json_file:
         data = json.load(json_file)
         
         opponents = []
